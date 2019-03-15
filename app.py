@@ -5,7 +5,7 @@ import pandas as pd
 import config
 import matplotlib.pyplot as plt
 import requests
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 import time
 from datetime import date, datetime, timedelta
 import json
@@ -41,6 +41,11 @@ app = Flask(__name__)
 #################################################
 
 @app.route("/")
+def index():
+    """List all available api routes."""
+    return render_template('index.html')
+
+@app.route("/routes")
 def welcome():
     """List all available api routes."""
     return (
@@ -55,24 +60,24 @@ def welcome():
 
 @app.route("/latest")
 def latest_data():
-    latest = pd.read_sql(f'select * from EUR_USD_M5_A_Source limit 10', con=enginerawDB).to_json()
+    latest = pd.read_sql(f'select * from EUR_USD_M5_A_Source limit 100', con=enginerawDB).to_json(orient='records')
     return latest
 
 
 @app.route("/RSI")
 def RSI_data():
-    RSI = pd.read_sql(f'select * from RSI limit 10', con=engineindicatorsDB).to_json()
+    RSI = pd.read_sql(f'select * from RSI limit 10', con=engineindicatorsDB).to_json(orient='records')
     return RSI
 
 @app.route("/MACD")
 def MACD_data():
-    MACD = pd.read_sql(f'select * from MACD limit 10', con=engineindicatorsDB).to_json()
+    MACD = pd.read_sql(f'select * from MACD limit 10', con=engineindicatorsDB).to_json(orient='records')
     return MACD
 
 
 @app.route("/BollBand")
 def BB_data():
-    BB = pd.read_sql(f'select * from Boll_Bands limit 10', con=engineindicatorsDB).to_json()
+    BB = pd.read_sql(f'select * from Boll_Bands limit 10', con=engineindicatorsDB).to_json(orient='records')
     return BB
 
 
