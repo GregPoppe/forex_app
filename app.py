@@ -34,7 +34,7 @@ engineindicatorsDB = create_engine(f'mysql://{indicatorsDB}')
 # Flask Setup
 #################################################
 app = Flask(__name__)
-
+unixObs = 1530791700
 
 #################################################
 # Flask Routes
@@ -60,24 +60,24 @@ def welcome():
 
 @app.route("/latest")
 def latest_data():
-    latest = pd.read_sql(f'select * from EUR_USD_M5_A_Source limit 100', con=enginerawDB).to_json(orient='records')
+    latest = pd.read_sql(f'select * from EUR_USD_M5_A_Source where unix >= {unixObs} - 30000 and unix <= {unixObs} + 15000', con=enginerawDB).to_json(orient='records')
     return latest
 
 
 @app.route("/RSI")
 def RSI_data():
-    RSI = pd.read_sql(f'select * from RSI limit 10', con=engineindicatorsDB).to_json(orient='records')
+    RSI = pd.read_sql(f'select * from RSI where unix >= {unixObs} - 30000 and unix <= {unixObs} + 15000', con=engineindicatorsDB).to_json(orient='records')
     return RSI
 
 @app.route("/MACD")
 def MACD_data():
-    MACD = pd.read_sql(f'select * from MACD limit 10', con=engineindicatorsDB).to_json(orient='records')
+    MACD = pd.read_sql(f'select * from MACD where unix >= {unixObs} - 30000 and unix <= {unixObs} + 15000', con=engineindicatorsDB).to_json(orient='records')
     return MACD
 
 
 @app.route("/BollBand")
 def BB_data():
-    BB = pd.read_sql(f'select * from Boll_Bands limit 10', con=engineindicatorsDB).to_json(orient='records')
+    BB = pd.read_sql(f'select * from Boll_Bands where unix >= {unixObs} - 30000 and unix <= {unixObs} + 15000', con=engineindicatorsDB).to_json(orient='records')
     return BB
 
 
