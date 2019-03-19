@@ -24,9 +24,12 @@ pw = config.sql_pw
 
 rawDB = f'root:{pw}@127.0.0.1/raw_data_db'
 indicatorsDB = f'root:{pw}@127.0.0.1/indicators_db'
+signalsDB = f'root:{pw}@127.0.0.1/signals_db'
+
 
 enginerawDB = create_engine(f'mysql://{rawDB}')
 engineindicatorsDB = create_engine(f'mysql://{indicatorsDB}')
+enginesignalsDB = create_engine(f'mysql://{signalsDB}')
 
 
 
@@ -64,6 +67,14 @@ def latest_data():
     return latest
 
 
+@app.route("/latest_short")
+def latest_short_data():
+    latest_short = pd.read_sql(f'select * from EUR_USD_M5_A_Source where unix >= {unixObs} - 30000 and unix <= {unixObs}', con=enginerawDB).to_json(orient='records')
+    return latest_short
+
+
+
+
 @app.route("/RSI")
 def RSI_data():
     RSI = pd.read_sql(f'select * from RSI where unix >= {unixObs} - 30000 and unix <= {unixObs} + 15000', con=engineindicatorsDB).to_json(orient='records')
@@ -81,6 +92,28 @@ def BB_data():
     return BB
 
 
+@app.route("/Stochastics")
+def Stoc_data():
+    Stc = pd.read_sql(f'select * from Stochastics where unix >= {unixObs} - 30000 and unix <= {unixObs} + 15000', con=engineindicatorsDB).to_json(orient='records')
+    return Stc
+
+@app.route("/Williams_R")
+def Williams_R_data():
+    WR = pd.read_sql(f'select * from Williams_R where unix >= {unixObs} - 30000 and unix <= {unixObs} + 15000', con=engineindicatorsDB).to_json(orient='records')
+    return WR
+
+
+@app.route("/ATR")
+def ATR_data():
+    ATR = pd.read_sql(f'select * from ATR where unix >= {unixObs} - 30000 and unix <= {unixObs} + 15000', con=engineindicatorsDB).to_json(orient='records')
+    return ATR
+
+
+
+@app.route("/signals")
+def sig_data():
+    sig = pd.read_sql(f'select * from signals where unix >= {unixObs} - 30000 and unix <= {unixObs} + 15000', con=enginesignalsDB).to_json(orient='records')
+    return sig
 
 
 if __name__ == '__main__':
