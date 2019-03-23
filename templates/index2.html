@@ -34,23 +34,48 @@
       </nav>
       <br>
    </div>
+   
    <div class="container">
       <div class="row">
-               <div id="indselect-container"></div>
-               <div id="dirselect-container"></div>
-               <div id="timeselect-container"></div>
-               <div class="col-2">
-               <button type="button" class="btn btn-dark" style="width:100%" onclick="adjustGraph()">Show Me!</button>
-                  <!-- js will add a from CandleStick -->
-            </div>
+        <div class="col-6">
+           <p>Select a Y Value</p>
+           <select id="y" onchange="newchart();">
+               <option value="RSI_Value">RSI</option>
+               <option value="MACD_Value">MACD</option>
+               <option value="Williams_R_Value">Williams R</option>
+               <option value="K5_Value">K5 Line Value</option>
+               <option value="D5_Value">D5 Line Value</option>
+               <option value="BB_Range">Boll Band Range</option>
+               <option value="DistLower">Dist From Band (Lower)</option>
+               <option value="DistUpper">Dist From Band (Upper)</option>
+               <option value="K_D_Divergence">K line D Line Range</option>
+               <option value="volume">Trading Volume</option>               
+             </select>
+          </div>
+          <div class="col-6">
+          
+            <p>Select an X Value</p>
+         <select id="x" onchange="newchart();">
+             <option value="MACD_Value">MACD</option>
+             <option value="RSI_Value">RSI</option>
+             <option value="Williams_R_Value">Williams R</option>
+             <option value="K5_Value">K5 Line Value</option>
+             <option value="D5_Value">D5 Line Value</option>
+             <option value="BB_Range">Boll Band Range</option>      
+             <option value="DistLower">Dist From Band (Lower)</option>
+             <option value="DistUpper">Dist From Band (Upper)</option>
+             <option value="K_D_Divergence">K line D Line Range</option>
+             <option value="volume">Trading Volume</option>  
+             
+           </select>
+          </div>
+        </div>
       </div>
-   </div>
+          
+      <div id='scatter' style="height: 600px"></div>
       
-   <div id="plot1" style="height: 370px"></div>
-   <div id="plot2" style="height: 300px"></div>
-   <div id='plot3' style="height: 300px"></div>
-   
-   <script src="../static/js/CandlestickChart.js"></script>
+   <script src="../static/js/Scatter.js"></script>
+   <script src="../static/js/Density.js"></script>
    
    <!--<script src="../static/js/MACDChart.js"></script>-->
    <!-- Optional JavaScript -->

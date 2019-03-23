@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>EUR USD Chart</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+<body>
+  <div class="jumbotron jumbotron-fluid">
+     <div class="container JumboHeaderImg">
+        <h1 class="display-4" style="font-family:verdana; text-align:center;">Technical Trading: Fact or Fiction</h1>
+        <p class="lead" style="text-align:center;">Team Members: Anjali, Albert, Greg, Ryan</p>
+     </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!--a class="navbar-brand" href="#">Candle</a-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="{{ url_for('index') }}">Candle <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="{{ url_for('scatter') }}">Scatter <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="{{ url_for('terms') }}">Glossary of Terms</a>
+            <a class="nav-item nav-link active" href="{{ url_for('resources') }}">Resources</a>
+          </div>
+        </div>
+      </nav>
+      <br>
+   </div>
+
+      <h2>MACD</h2>
+      <a href="https://www.daytrading.com/macd" target = "_blank">Moving Average Convergence Divergence (Accessed on March 19, 2019)</a>
+      <br>
+      <a href="https://www.babypips.com/learn/forex/macd" target = "_blank">How to Use the MACD Indicator (Accessed on March 19, 2019)</a>    
+      <br>
+      <a href="https://www.incrediblecharts.com/indicators/macd.php" target = "_blank">Two Great MACD Trading Signals (Accessed on March 19, 2019)</a>    
+      <br>
+
+      <br>
+      <br>
+
+      <h2>RSI</h2>
+      <a href="https://investinganswers.com/financial-dictionary/technical-analysis/relative-strength-index-rsi-850" target = "_blank">Relative Strength Index (RSI) (Accessed on March 19, 2019)</a>
+      <br>
+      <a href="http://cns.bu.edu/~gsc/CN710/fincast/Technical%20_indicators/Relative%20Strength%20Index%20(RSI).htm" target = "_blank">Fisher, Nicholas, Relative Strength Index (RSI) (Accessed on March 19, 2019)</a>    
+      <br>
+      <a href="https://www.schwab.com/active-trader/insights/content/relative-strength-index-rsi" target = "_blank">Schwab Trading Insights (Accessed on March 19, 2019)</a>    
+      <br>
+
+      <br>
+      <br>
+
+      <h2>STOCHASTIC OSCILLATOR</h2>
+      <a href="Achelis, Steven B. STOCHASTIC OSCILLATOR. https://www.metastock.com/customer/resources/taaz/?p=106" target = "_blank">Achelis, Steven B. STOCHASTIC OSCILLATOR (Accessed on March 19, 2019)</a>
+      <br>
+      <a href="https://www.oanda.com/forex-trading/learn/trading-tools-strategies/stochastic" target = "_blank">OANDA Forex Trading Strategies (Accessed on March 19, 2019)</a>    
+      <br>
+      <a href="https://www.dummies.com/personal-finance/investing/technical-analysis/how-to-use-the-stochastic-oscillator-to-interpret-trading-price/" target = "_blank">How to Use The Stochastic Oscillator to Interpret Trading Price (Accessed on March 19, 2019)</a>    
+      <br>
+      
+      <br>
+      <br>
+
+      <h2>WILLIAMS %R</h2>
+      <a href="https://www.incrediblecharts.com/indicators/williams_percent_r.php" target = "_blank"> Williams %R (Accessed on March 19, 2019)</a>
+      <br>
+      <a href="http://williamspercentr.com/" target = "_blank">The History Behind It
+            Before there was RSI, before there was MACD, before there was ADX… there was…
+            Williams Percent R ( %R ) (Accessed on March 19, 2019)</a>    
+        <br>
+        <a href="https://www.investopedia.com/ask/answers/032015/how-do-i-use-stochastic-oscillator-create-forex-trading-strategy.asp" target = "_blank">How do I use Stochastic Oscillator to create a forex trading strategy? (Accessed on March 19, 2019)</a>    
+
+      <br>
+      <br>
+
+      <h2>Bollinger Bands</h2>
+      <a href="https://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:bollinger_bands" target = "_blank"> Stock Charts Bollinger Bands (Accessed on March 21, 2019)</a>
+
+  <!--<script src="../static/js/MACDChart.js"></script>-->
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

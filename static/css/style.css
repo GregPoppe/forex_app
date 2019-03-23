@@ -1,0 +1,29 @@
+```.pds-answer{
+    padding-bottom:5px !Important;
+}
+.pds-box-outer{
+  padding-bottom:5px !Important;
+}
+
+.svg-container{
+  height: 380px; !Important;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 600px;
+    overflow-x: hidden;
+}
+
+
+.jumbotron {
+    background-color: white; 
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
+}
+
+
+.justify-content-end a.nav-link i {color: white;}
+
+.justify-content-end a:hover.nav-link i {color: gray;}```
